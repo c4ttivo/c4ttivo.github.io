@@ -37,9 +37,10 @@ jQuery(document).ready(function($){
 	});
 
 	$(".main_menu a.templatemo_page3").click(function(){    
-    $('#menu-container .homepage').fadeOut(1000, function(){
-        $('#menu-container .portfolio').fadeIn(1000);
-	    });
+		$('#menu-container .homepage').fadeOut(1000, function(){									  
+			$('#menu-container .services').fadeIn(1000);
+			});
+		 $("#frame").attr("src", "https://c4ttivo.github.io/julia.html");
 		return false;
 	});
 	
@@ -51,10 +52,11 @@ jQuery(document).ready(function($){
 	});
 	
 	$(".main_menu a.templatemo_page4").click(function(){    
-    $('#menu-container .homepage').fadeOut(1000, function(){
-        $('#menu-container .testimonial').fadeIn(1000);
-	    });
-		return false
+		$('#menu-container .homepage').fadeOut(1000, function(){									  
+			$('#menu-container .services').fadeIn(1000);
+			});
+		 $("#frame").attr("src", "https://c4ttivo.github.io/mandelbrot.html");
+		return false;
 	});
 	$(".main_menu a.templatemo_homeabout").click(function(){
 		$('#menu-container .about').fadeOut(1000, function(){
@@ -64,9 +66,10 @@ jQuery(document).ready(function($){
 	});
 
 	$(".main_menu a.templatemo_page5").click(function(){    
-    $('#menu-container .homepage').fadeOut(1000, function(){
-        $('#menu-container .about').fadeIn(1000);
-	    });
+		$('#menu-container .homepage').fadeOut(1000, function(){									  
+			$('#menu-container .services').fadeIn(1000);
+			});
+		 $("#frame").attr("src", "https://c4ttivo.github.io/iterados.html");
 		return false;
 	});
 	
@@ -78,10 +81,11 @@ jQuery(document).ready(function($){
 	});
 	
 	$(".main_menu a.templatemo_page6").click(function(){    
-    $('#menu-container .homepage').fadeOut(1000, function(){
-        $('#menu-container .contact').fadeIn(1000);
-		loadScript();		
-	    });
+		$('#menu-container .homepage').fadeOut(1000, function(){									  
+			$('#menu-container .services').fadeIn(1000);
+			});
+		 $("#frame").attr("src", "https://c4ttivo.github.io/3D.html");
+		return false;
 	});
 	
 	
