@@ -5,13 +5,15 @@ import matplotlib as plt
 from ipywidgets import interact, interactive, fixed, interact_manual, Layout
 import ipywidgets as widgets
 import numpy as N
-
 from PIL import Image
+import warnings
+warnings.filterwarnings('ignore')
 
+#Numero de iteraciones
 maxit = 32
-h = 1e-6
-eps = 1e-3
 
+#Función que se encarga de dibujar un fractal de Julia
+#a partir de la funcion fn.
 def fractal(fn, imgx=800, imgy=800, xa=-2, xb=2, ya=-2, yb=2):
     image=Image.new("RGBA",(imgx,imgy))
     f = eval('lambda z: ' + fn)
@@ -26,12 +28,13 @@ def fractal(fn, imgx=800, imgy=800, xa=-2, xb=2, ya=-2, yb=2):
                 if abs(z)>1000:
                     break
                 z=z0
-                r=i*8
-                g=i*8
-                b=i*8
+                r=i*9
+                g=i*11
+                b=i*5
                 image.putpixel((x,y),(r,g,b))    
     return image
 
+#Función interactiva.
 def custom_fractal():
     interact_manual(fractal, fn="z**2")
 

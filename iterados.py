@@ -12,10 +12,15 @@ from pylab import *
 import warnings
 warnings.filterwarnings('ignore')
 
+#Función que realiza la transformación
+#recibe la matriz M, la multiplica por X
+#y le suma t.
 def transafin(M,t,x):
     y=M@x+t
     return y
 
+#Función que gráfica el triángulo de Sierpinsky.
+#Como ejemplo de un algoritmo determinista.
 def sierpinsky():
     fig=plt.figure()
     ax=plt.gca()
@@ -30,13 +35,15 @@ def sierpinsky():
     ax.set_yticks(np.arange(-0.2,1.4,0.2))
     plt.grid()
     ax.axis("equal")
-    
+
+#Función que gráfica el helecho (Fern).
+#Como ejemplo de un algoritmo aleatorio.
 def fern():
-    # initializing the list 
+    # Inicializa las listas x e y
     x = [] 
     y = [] 
 
-    # setting first element to 0 
+    # Inicializa el primer elemento de cada una en 0 
     x.append(0) 
     y.append(0) 
 
@@ -44,28 +51,28 @@ def fern():
 
     for i in range(1, 50000): 
 
-        # generates a random integer between 1 and 100 
+        # genera un entero aleatorio entre 1 y 100
         z = randint(1, 100) 
 
-        # the x and y coordinates of the equations 
-        # are appended in the lists respectively. 
+        # las coordenadas de x e y de las ecuaciones
+        # son agregadas a la lista.
 
-        # for the probability 0.01 
+        # probabilidad de 0.16 
         if z == 1: 
             x.append(0) 
             y.append(0.16*(y[current])) 
 
-        # for the probability 0.85     
+        # probabilidad de 0.85
         if z>= 2 and z<= 86: 
             x.append(0.85*(x[current]) + 0.04*(y[current])) 
             y.append(-0.04*(x[current]) + 0.85*(y[current])+1.6) 
 
-        # for the probability 0.07     
+        # probabilidad del 0.07
         if z>= 87 and z<= 93: 
             x.append(0.2*(x[current]) - 0.26*(y[current])) 
             y.append(0.23*(x[current]) + 0.22*(y[current])+1.6) 
 
-        # for the probability 0.07     
+        # probabilidad de 0.07     
         if z>= 94 and z<= 100: 
             x.append(-0.15*(x[current]) + 0.28*(y[current])) 
             y.append(0.26*(x[current]) + 0.24*(y[current])+0.44) 
@@ -76,6 +83,9 @@ def fern():
     plt.axis("equal")
     plt.show() 
     
+#Función que grafica el copo de Koch
+#lado es el tamaño de la línea y n
+#el número de interaciones.
 def copoVonKoch(lado, n):
     x_vertice1 = 0
     y_vertice1 = 0
@@ -90,7 +100,9 @@ def copoVonKoch(lado, n):
     curvaVonKoch(x_vertice2, y_vertice2, x_vertice3, y_vertice3, n)
     curvaVonKoch(x_vertice3, y_vertice3, x_vertice1, y_vertice1, n)
 
-
+#Función recursiva que grafica la curva de Koch
+#Recibe las coordenadas iniciales y finales y las dibuja
+#cuando el valor de n es igual a cero.
 def curvaVonKoch(xi, yi, xf, yf, n):
     if n == 0:
         plot([xi, xf], [yi, yf], lw=1.0, color='b')
@@ -112,7 +124,8 @@ def curvaVonKoch(xi, yi, xf, yf, n):
         curvaVonKoch(x2, y2, x3, y3, n - 1)
         curvaVonKoch(x3, y3, xf, yf, n - 1)
 
-
+#Función que grafica la curva de Koch y el 
+#copo de Koch.
 def koch(lado, n):
     axes().set_xlim(0, lado)
     axes().set_ylim(-2, lado / 2.0)
@@ -129,7 +142,8 @@ def koch(lado, n):
     copoVonKoch(lado, n)
     show()
 
-
+#Función recursiva que dibuja la alfonbra de 
+#Sierpinksy.
 def spski_carpet(ax, p, n, size):
     if n > 0:
         ax.add_patch(Rectangle((p[0, 0] - size / 6,
@@ -154,6 +168,7 @@ def spski_carpet(ax, p, n, size):
         q = np.array([[size / 3], [size / 3]])
         spski_carpet(ax, p + q, n - 1, size / 3)
 
+#Función que grafica la alfombra de Sierpinsky.
 def sierpinski_carpet():
     fig = plt.figure()
     fig.patch.set_facecolor('white')
